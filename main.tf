@@ -10,11 +10,14 @@ provider "azurerm" {
   features {
 
   }
-
 }
-
 
 resource "azurerm_resource_group" "rg" {
   name = "naushad-rg"
+  location = "westus"
+}
+
+resource "azurerm_resource_group" "rg1" {
+  name = "naushad1-rg"
   location = "westus"
 }
