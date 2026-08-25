@@ -7,7 +7,7 @@ on:
 
   workflow_dispatch:
 jobs:
-  terraform_ci:
+  terraform_ci-a:
    if: github.ref == 'refs/heads/feature'
    runs-on: ubuntu-latest
    steps:
