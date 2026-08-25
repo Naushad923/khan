@@ -3,6 +3,7 @@ on:
   push:
     branches:
      - feature
+     
 
   workflow_dispatch:
 jobs:
@@ -34,13 +35,7 @@ jobs:
      
      
 
-on:
-  push:
-    branches:
-     - main
-  workflow_dispatch:
-    
-jobs:
+
   terraform_cd:
    runs-on: ubuntu-latest
    steps:
