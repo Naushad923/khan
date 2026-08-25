@@ -3,13 +3,12 @@ on:
   push:
     branches:
      - feature
+     
 
-  pull_request:
-    branches:
-      - main  
   workflow_dispatch:
 jobs:
-  terraform_ci:
+  terraform_ci-a:
+   if: github.ref == 'refs/heads/feature'
    runs-on: ubuntu-latest
    steps:
    - uses: actions/checkout@v4
@@ -33,7 +32,37 @@ jobs:
    - name: validate
      run: terraform validate  
    - name: plan
-     run: terraform plan            
+     run: terraform plan    
+     
+     
+
+
+  terraform_cd:
+   if: github.ref == 'refs/heads/main'
+   runs-on: ubuntu-latest
+   steps:
+   - uses: actions/checkout@v4
+
+   - uses: hashicorp/setup-terraform@v4
+     with:
+        terraform_version: "1.14.6"
+
+   - uses: azure/login@v3
+     with:
+       creds: |
+          {
+          "clientId": "c640f30d-cbee-490a-84c2-6f2bfa40c3c9",
+          "clientSecret": "Pxl8Q~Cctdld8MOk~eFmEYuotEoDNMmswBWZua2-",
+          "subscriptionId": "0e2f2b6f-1f5f-4582-8c39-1dcfd3fd1f88",
+          "tenantId": "3c7bd315-a86f-4b23-90b9-6318c8a94eea"
+          }
+
+   - name: init
+     run: terraform init
+   - name: validate
+     run: terraform validate  
+   - name: plan
+     run: terraform plan         
 
 
 
