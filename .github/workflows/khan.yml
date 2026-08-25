@@ -1,19 +1,30 @@
-
-name: CI-naushad
+name: alam-ci
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
     branches:
-      - feature
+     - feature
+
+  pull_request:
+    branches:
+      - main  
   workflow_dispatch:
-
 jobs:
-  Khandada:
-    runs-on: ubuntu-latest
+  runs-on: ubuntu-latest
+  steps:
 
-    steps:
-      - uses: actions/checkout@v4
+  - uses: hashicorp/setup-terraform@v4
+    with:
+       terraform_version: "1.14.6"
+  - uses: azure/login@v3
+    with:
+      creds: |
+      {
+      "clientId": "c640f30d-cbee-490a-84c2-6f2bfa40c3c9"
+      "clientSecret": "Pxl8Q~Cctdld8MOk~eFmEYuotEoDNMmswBWZua2-"
+      "subscriptionId": "0e2f2b6f-1f5f-4582-8c39-1dcfd3fd1f88"
+      "tenantId": "3c7bd315-a86f-4b23-90b9-6318c8a94eea"
+      }
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
+
+
+
