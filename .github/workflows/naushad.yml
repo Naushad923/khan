@@ -10,9 +10,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: hashicorp/setup-terraform@v4
-        with:
-          terraform_version: "1.14.6"
+      # - uses: hashicorp/setup-terraform@v4
+      #   with:
+      #     terraform_version: "1.14.6"
       
           
       - uses: azure/login@v3
