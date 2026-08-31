@@ -1,20 +1,23 @@
-name: CI
+
+name: CI_14_08_2026
 on:
   push:
     branches:
-      - main
-  workflow_dispatch:
+        - main
+
+  # workflow_dispatch:
+
 jobs:
-  Terraform_Plan:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
     runs-on: self-hosted
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
-      # - uses: hashicorp/setup-terraform@v4
-      #   with:
-      #     terraform_version: "1.14.6"
-      
-          
       - uses: azure/login@v3
         with:
           creds: |
@@ -24,13 +27,7 @@ jobs:
             "subscriptionId": "5f2215aa-254d-4cd3-ab18-8cdd7a251f56",
             "tenantId": "c04247ef-3725-47f1-93c2-18778afc86e8"
             }
-
-      - name: Init
-        run: terraform init  
-        
-      - name: plan
-        run: terraform plan 
-      - name: validate
-        run: terraform validate              
+      - name: init
+        run: terraform init          
     
 
