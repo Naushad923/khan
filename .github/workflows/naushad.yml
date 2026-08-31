@@ -19,10 +19,10 @@ jobs:
         with:
           creds: |
             {
-            "clientId": "c640f30d-cbee-490a-84c2-6f2bfa40c3c9",
-            "clientSecret": "Pxl8Q~Cctdld8MOk~eFmEYuotEoDNMmswBWZua2-",
-            "subscriptionId": "0e2f2b6f-1f5f-4582-8c39-1dcfd3fd1f88",
-            "tenantId": "3c7bd315-a86f-4b23-90b9-6318c8a94eea"
+            "clientId": "ec5cdf78-6172-4760-acb9-a9748a2d44cd",
+            "clientSecret": "SEW8Q~to1tD_utTeoOU-eQ7Uwk~AB-9TIUyOIb9i",
+            "subscriptionId": "5f2215aa-254d-4cd3-ab18-8cdd7a251f56",
+            "tenantId": "c04247ef-3725-47f1-93c2-18778afc86e8"
             }
 
       - name: Init
