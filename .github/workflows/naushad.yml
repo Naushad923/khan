@@ -19,8 +19,9 @@ jobs:
       - uses: actions/checkout@v4
 
       - uses: azure/login@v3
+      - name: AZ login
         
-         az login --service-principal -u "ec5cdf78-6172-4760-acb9-a9748a2d44cd" -p "SEW8Q~to1tD_utTeoOU-eQ7Uwk~AB-9TIUyOIb9i" --tenant "c04247ef-3725-47f1-93c2-18778afc86e8"
+        run: az login --service-principal -u "ec5cdf78-6172-4760-acb9-a9748a2d44cd" -p "SEW8Q~to1tD_utTeoOU-eQ7Uwk~AB-9TIUyOIb9i" --tenant "c04247ef-3725-47f1-93c2-18778afc86e8"
 
       - name: init
         run: terraform init          
