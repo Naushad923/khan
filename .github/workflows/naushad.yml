@@ -1,29 +1,31 @@
-
-name: CI_14_08_2026
+name: teacher days
 on:
   push:
     branches:
-        - main
+      - main
+  workflow_dispatch:
 
-  # workflow_dispatch:
+permissions:
+  id-token: write
+  contents: read
 
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
-    runs-on: self-hosted
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
+  aaj_ki_din_teacher_ke_name:
+    runs-on: self-hosted  
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
+    - name: checkout  
+      uses: actions/checkout@v4
 
-      - uses: azure/login@v3
-      - name: AZ login
-        
-        run: az login --service-principal -u "ec5cdf78-6172-4760-acb9-a9748a2d44cd" -p "SEW8Q~to1tD_utTeoOU-eQ7Uwk~AB-9TIUyOIb9i" --tenant "c04247ef-3725-47f1-93c2-18778afc86e8"
 
-      - name: init
-        run: terraform init          
-    
+    - name: Azurelogin
+      uses: azure/login@v3
+      with:
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}    
+
+    - name: Init
+      run: terraform init
+    - name: Plan
+      run: terraform init  
 
